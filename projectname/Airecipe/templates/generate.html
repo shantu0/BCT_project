@@ -1,0 +1,140 @@
+{% extends "nav.html" %}  
+{% block title %}Generate{% endblock title %}
+
+{% block main %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<title>Title</title>
+</head>
+<script>
+    const addBtn = document.getElementById('add-btn');
+        const inputContainer = document.getElementById('input-container');
+        
+        addBtn.addEventListener('click', () => {
+          const newInput = document.createElement('input');
+          newInput.type = 'text';
+          (link (unavailable))= `input-${inputContainer.children.length + 1}`;
+          inputContainer.appendChild(newInput);
+        });
+    </script>
+<style>
+     * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+
+    body {
+        background-image: url(https://img.freepik.com/free-photo/3d-dark-grunge-display-background-with-smoky-atmosphere_1048-16218.jpg);
+        background-size: cover;
+    }
+    .generatebutton {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .generatebutton button{
+        color: rgb(255, 255, 255);
+        background-color: black;
+
+    }
+    button {
+        background-color: #ff9751;
+        border-radius: 50px;
+        box-shadow: rgba(187, 142, 44, 0.2) 0 -25px 18px -14px inset, rgba(187, 130, 44, 0.15) 0 1px 2px, rgba(187, 142, 44, 0.15) 0 2px 4px, rgba(187, 130, 44, 0.15) 0 4px 8px, rgba(187, 142, 44, 0.15) 0 8px 16px, rgba(187, 146, 44, 0.15) 0 16px 32px;
+        color: rgb(255, 255, 255);
+        cursor: pointer;
+        display: inline-block;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        padding: 7px 20px;
+        text-align: center;
+        text-decoration: none;
+        transition: all 250ms;
+        border: 0;
+        font-size: 16px;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        margin-top: 100px;
+        height: 60px;
+        width: 100px;
+        animation: pulsate 1.5s infinite;
+    }
+
+    button:hover {
+        background-color: #ff6a06;
+        box-shadow: rgba(255, 174, 0, 0.35) 0 -25px 18px -14px inset, rgba(187, 125, 44, 0.25) 0 1px 2px, rgba(187, 123, 44, 0.25) 0 2px 4px, rgba(187, 127, 44, 0.25) 0 4px 8px, rgba(187, 134, 44, 0.25) 0 8px 16px, rgba(187, 134, 44, 0.25) 0 16px 32px;
+        transform: scale(1.05) rotate(-1deg);
+    }
+    .form-incredient {
+        margin: 20px;
+        margin-left: 70px;
+        height: 90px;
+
+    }
+    .output {
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        margin: 20px;
+    }
+    .output textarea{
+        width: 80%;
+        height: 100px;
+    }
+    .input {
+        height: 100px;
+        display: flex;
+        gap: 50px;
+    }
+</style>
+<body>
+    <h2 style="margin: 10px; color: bisque;">Give incredients</h2>
+    <div class="form-incredient">
+        <div class="iheading">
+            <h3 style="color: white;">Item</h3>
+        </div>
+        <div class="input">
+            <input style="height:30px;" type="text" id="input-1">
+        <button style="margin: 0px;padding:0px;height: 40px;" id="add-btn">Add item</button>
+        </div>
+      </div>
+    <div class="form-incredient">
+        <div class="iheading">
+            <h3 style="color: white;">Item</h3>
+        </div>
+        <div class="input">
+            <input style="height:30px;" type="text" id="input-1">
+        <button style="margin: 0px;padding:0px;height: 40px;" id="add-btn">Add item</button>
+        </div>
+      </div>
+      
+    <div class="generatebutton">
+        <button>
+            Generate
+        </button>
+    </div>
+    <div class="output">
+        <textarea readonly></textarea>
+    </div>
+    <div class="generatebutton">
+        <button>
+            &hearts;
+        </button>
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+{% endblock main %}

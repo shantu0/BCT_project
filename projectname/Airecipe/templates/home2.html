@@ -23,8 +23,12 @@
     }
 
     body {
-        background-image: url(https://img.freepik.com/free-photo/3d-dark-grunge-display-background-with-smoky-atmosphere_1048-16218.jpg);
-        background-size: cover;
+        background-image: url(https://autogpt.net/wp-content/uploads/2023/06/Pogla_A_robot_cooking_1d0a3be0-8268-4962-9290-2c62dc3d53a1-768x512.jpg);
+    background-size: cover;
+    
+    background-repeat: no-repeat;
+    height: 100vh;
+    margin: 0;
     }
 
 
@@ -45,11 +49,15 @@
         color: azure;
     }
 
-    .button {
-        margin-top: 20px;
-    }
-
     button {
+        margin-top: 100px;
+        border: 10px solid white;
+        
+    }
+/* CSS */
+
+/* CSS */
+button {
         background-color: #ff9751;
         border-radius: 100px;
         box-shadow: rgba(187, 142, 44, 0.2) 0 -25px 18px -14px inset, rgba(187, 130, 44, 0.15) 0 1px 2px, rgba(187, 142, 44, 0.15) 0 2px 4px, rgba(187, 130, 44, 0.15) 0 4px 8px, rgba(187, 142, 44, 0.15) 0 8px 16px, rgba(187, 146, 44, 0.15) 0 16px 32px;
@@ -175,11 +183,11 @@
                 <h1 class="typing-containe typing-effec" style="font-size:70px;">with Chef Ai</h1>
             </div>
             <div class="button">
-                <a href={% url "generate-page" %}><button>Get started</button></a>
+                <a href={% url "generate-page" %}><button class="button-33">Get started</button></a>
             </div>
         </div>
         <div class="box2">
-            <img src="chatbot_burger-removebg-preview.png" alt="Chatbot Burger"/>
+            
         </div>
     </div>
 

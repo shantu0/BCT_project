@@ -1,61 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipe Generator</title>
-    <script>
-        function generateRecipe(event) {
-            event.preventDefault(); // Prevent default form submission
-            const ingredients = document.getElementById('ingredients').value;
-
-            fetch('/generate/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                    'X-CSRFToken': '{{ csrf_token }}'
-                },
-                body: `ingredients=${encodeURIComponent(ingredients)}`
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('recipe-output').innerText = data.recipe;
-                document.getElementById('wishlist-button').style.display = 'block';
-            });
-        }
-
-        function addToWishlist() {
-            const recipe = document.getElementById('recipe-output').innerText;
-
-            fetch('/wishlist/add/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                    'X-CSRFToken': '{{ csrf_token }}'
-                },
-                body: `recipe=${encodeURIComponent(recipe)}`
-            })
-            .then(() => {
-                alert('Recipe added to wishlist!');
-            });
-        }
-    </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<title>
+</title>
 </head>
 <body>
-    <h1>Recipe Generator</h1>
-
-    <form onsubmit="generateRecipe(event)">
-        <label for="ingredients">Enter Ingredients:</label>
-        <textarea id="ingredients" name="ingredients" rows="4" cols="50"></textarea><br>
-        <button type="submit">Generate Recipe</button>
+    <form method="wishlist">
+        {% csrf_token %}
+        <form method="post">
+            {% csrf_token %}
+            <label for="name">Enter items</label>
+            <input type="text" name="pitems" id="items">
+            <button type="submit" class="btn btn-primary">Generate</button>
+        </form>
+        <div class="card-body">
+            <pre>{{ recipe_request.generated_recipe }}</pre>
+        </div>
+        <button type="submit" class="btn btn-primary">Add to wislist</button>
     </form>
 
-    <h2>Generated Recipe:</h2>
-    <p id="recipe-output"></p>
-
-    <button id="wishlist-button" style="display:none;" onclick="addToWishlist()">Add to Wishlist</button>
-
-    <br><br>
-    <a href="/wishlist/">Go to Wishlist</a>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
 </body>
 </html>

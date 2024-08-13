@@ -141,6 +141,20 @@
       top: 0;
       border-radius: 10px;
   }
+/* HTML: <div class="loader"></div> */
+.spinner {
+  width: 15px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  animation: l5 1s infinite linear alternate;
+}
+@keyframes l5 {
+    0%  {box-shadow: 20px 0 #ffffff, -20px 0 rgba(255, 255, 255, 0.133);background: #000 }
+    33% {box-shadow: 20px 0 #ffffff, -20px 0 #0002;background: #0002}
+    66% {box-shadow: 20px 0 #0002,-20px 0 #000; background: #0002}
+    100%{box-shadow: 20px 0 rgba(255, 255, 255, 0.133),-20px 0 #000; background: #000 }
+}
+
 </style>
 
 
@@ -153,6 +167,11 @@
                 <input type="text" name="pitems" id="items" required>
                 <button type="submit" id="first-submit" class="btn btn-primary">Generate</button>
             </div>
+            <div id="loader" style="display: none;">
+                <div class="spinner"></div>
+                Loading...
+            </div>
+            
     
             <!-- Container to display the generated recipe -->
             <div class="glass-container" id="recipe-container" style="display: none;">
@@ -193,7 +212,22 @@
                 console.error('Error:', error);
             });
         });
+        function showLoader() {
+    const loader = document.getElementById('loader');
+    loader.style.display = 'block';
+
+    setTimeout(function() {
+        loader.style.display = 'none';
+    }, 2000); // Hide the loader after 2 seconds
+}
+
+// Trigger the loader on form submission or any other event
+document.getElementById('first-submit').addEventListener('click', function() {
+    showLoader();
+});
+
     </script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
 </body>

@@ -1,8 +1,12 @@
 from django.urls import path
 from . import views
+from .views import generate_recipe
+
 
 urlpatterns = [
     path('',views.home2, name='index-page'),
     path('generate/',views.generate,name="generate-page"),
     path('wishlist/',views.wishlist,name="wishlist-page"),
+    path('generate-recipe/', generate_recipe, name='generate_recipe'),
+    
 ]

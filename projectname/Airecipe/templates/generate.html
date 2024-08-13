@@ -1,4 +1,4 @@
-{% extends "nav.html" %}  
+{% extends "nav.html" %}
 {% block title %}Generate{% endblock title %}
 {% block main %}
 <!DOCTYPE html>
@@ -11,141 +11,144 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <link rel="stylesheet" href="assets/css/style.css">
-<title>
-</title>
+<title>Generate Recipe</title>
 </head>
 <style>
-    *{
-        font-size: 20px;
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    }
-    body {
-        background-image: url(https://t3.ftcdn.net/jpg/06/37/79/62/360_F_637796226_liOHveRjDicrSL7U5Z4ErzMaFf2c1ybe.jpg); /* Replace with your image path */
-    background-size: cover; /* Ensures the image covers the entire screen */
-    background-repeat: no-repeat; /* Prevents the image from repeating */
-    background-position: center; /* Centers the image */
-    background-attachment: fixed; /* Optional: keeps the background fixed during scroll */
-    height: 100vh; /* Ensures the body is at least the height of the viewport */
-    margin: 0; /* Removes default margin */
-    padding: 0; /* Removes default padding */
-
-    }
-    .container {
-        
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 20px;
-        margin: 20px;
-    }
-    input {
-        width: 300px;
-        height: 60px;
-        gap: 10px;
-    }
-    .glass-container {
-        margin: 10px;
-        display: none;
-        width: 700px;
-        height: 300px;
-        background: rgba(255, 255, 255, 0.04);
-        border-radius: 16px;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(4.1px);
-        -webkit-backdrop-filter: blur(4.1px);
-        border: 1px solid rgba(255, 255, 255, 0.9);
-    }
-    .glass-container.expand {
-            display: block;
-            max-height: 1000px; /* Arbitrary large value to allow full expansion */
-            opacity: 1;
-    }
-    #second-submit {
-            display: none;
-            margin-top: 10px;
-    }
-    label {
-        color: white;
-
-    }
-
-/* CSS */
-button{
-  padding: 0.6em 2em;
-  border: none;
-  outline: none;
-  color: rgb(255, 255, 255);
-  background: #111;
-  cursor: pointer;
-  position: relative;
-  z-index: 0;
-  border-radius: 10px;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-}
-
-button:before {
-  content: "";
-  background: linear-gradient(
-    45deg,
-    #ff0000,
-    #ff7300,
-    #fffb00,
-    #48ff00,
-    #00ffd5,
-    #002bff,
-    #7a00ff,
-    #ff00c8,
-    #ff0000
-  );
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  background-size: 400%;
-  z-index: -1;
-  filter: blur(5px);
-  -webkit-filter: blur(5px);
-  width: calc(100% + 4px);
-  height: calc(100% + 4px);
-  animation: glowing-button-85 20s linear infinite;
-  transition: opacity 0.3s ease-in-out;
-  border-radius: 10px;
-}
-
-@keyframes glowing-button-85 {
-  0% {
-    background-position: 0 0;
+  /* Global styles */
+  *{
+      font-size: 20px;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   }
-  50% {
-    background-position: 400% 0;
+  
+  body {
+      background-image: url(https://t3.ftcdn.net/jpg/06/37/79/62/360_F_637796226_liOHveRjDicrSL7U5Z4ErzMaFf2c1ybe.jpg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-attachment: fixed;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
   }
-  100% {
-    background-position: 0 0;
+  
+  .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      margin: 20px;
   }
-}
 
-button:after {
-  z-index: -1;
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: #222;
-  left: 0;
-  top: 0;
-  border-radius: 10px;
-}
-    
+  input {
+      width: 300px;
+      height: 60px;
+      margin-right: 10px;
+  }
+
+  .glass-container {
+      display: none;
+      width: 700px;
+      max-height: 300px;
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 16px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(4.1px);
+      -webkit-backdrop-filter: blur(4.1px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      overflow-y: auto; /* Enable scrolling if content overflows */
+      padding: 10px; /* Add some padding to the container */
+  }
+
+  .glass-container.expand {
+      display: block;
+      max-height: 1000px; /* Arbitrary large value to allow full expansion */
+      opacity: 1;
+  }
+
+  #second-submit {
+      display: none;
+      margin-top: 10px;
+  }
+
+  label {
+      color: white;
+  }
+
+  button {
+      padding: 0.6em 2em;
+      border: none;
+      outline: none;
+      color: rgb(255, 255, 255);
+      background: #111;
+      cursor: pointer;
+      position: relative;
+      z-index: 0;
+      border-radius: 10px;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+  }
+
+  button:before {
+      content: "";
+      background: linear-gradient(
+          45deg,
+          #ff0000,
+          #ff7300,
+          #fffb00,
+          #48ff00,
+          #00ffd5,
+          #002bff,
+          #7a00ff,
+          #ff00c8,
+          #ff0000
+      );
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      background-size: 400%;
+      z-index: -1;
+      filter: blur(5px);
+      -webkit-filter: blur(5px);
+      width: calc(100% + 4px);
+      height: calc(100% + 4px);
+      animation: glowing-button-85 20s linear infinite;
+      transition: opacity 0.3s ease-in-out;
+      border-radius: 10px;
+  }
+
+  @keyframes glowing-button-85 {
+      0% {
+          background-position: 0 0;
+      }
+      50% {
+          background-position: 400% 0;
+      }
+      100% {
+          background-position: 0 0;
+      }
+  }
+
+  button:after {
+      z-index: -1;
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #222;
+      left: 0;
+      top: 0;
+      border-radius: 10px;
+  }
 </style>
+
 
 <body>
     <div class="container">
-        <form method="post" id="wishlist-form">
+        <form id="wishlist-form">
             {% csrf_token %}
             <div class="input">
-                <!-- First form to generate the recipe -->
                 <label  for="name">Enter items</label>
                 <input type="text" name="pitems" id="items" required>
                 <button type="submit" id="first-submit" class="btn btn-primary">Generate</button>
@@ -153,7 +156,7 @@ button:after {
     
             <!-- Container to display the generated recipe -->
             <div class="glass-container" id="recipe-container" style="display: none;">
-                <pre style="color: white;margin: 5px;" id="generated-recipe">{{ recipe_request.generated_recipe }}</pre>
+                <pre style="color: white;margin: 5px;" id="generated-recipe"></pre>
             </div>
     
             <!-- Second submit button to add the recipe to the wishlist -->
@@ -164,11 +167,20 @@ button:after {
     <script>
         document.getElementById('wishlist-form').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent the default form submission
-    
-            // Simulate recipe generation
-            setTimeout(function() {
-                // Display the recipe (simulated here; replace with actual recipe generation logic)
-                document.getElementById('generated-recipe').textContent = "Here is the generated recipe based on your items!";
+            
+            var items = document.getElementById('items').value;
+
+            fetch("{% url 'generate_recipe' %}", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: JSON.stringify({ items: items })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('generated-recipe').textContent = data.recipe;
     
                 // Show the recipe container
                 document.getElementById('recipe-container').style.display = 'block';
@@ -176,12 +188,14 @@ button:after {
                 // Show the second submit button
                 document.getElementById('second-submit').style.display = 'inline-block';
     
-            }, 1000); // Simulate a delay (1 second)
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         });
     </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
 </body>
 </html>
 {% endblock main %}
-

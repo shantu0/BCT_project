@@ -3,29 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Recipe Generator</title>
+    <title>Recipe Generator</title>
     <script>
         function generateRecipe(event) {
-            event.preventDefault();  // Prevent the form from submitting the traditional way
+            event.preventDefault(); // Prevent default form submission
             const ingredients = document.getElementById('ingredients').value;
 
-            fetch('', {
+            fetch('/generate/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    'X-CSRFToken': '{{ csrf_token }}'  // Django CSRF protection
+                    'X-CSRFToken': '{{ csrf_token }}'
                 },
                 body: `ingredients=${encodeURIComponent(ingredients)}`
             })
             .then(response => response.json())
             .then(data => {
                 document.getElementById('recipe-output').innerText = data.recipe;
+                document.getElementById('wishlist-button').style.display = 'block';
+            });
+        }
+
+        function addToWishlist() {
+            const recipe = document.getElementById('recipe-output').innerText;
+
+            fetch('/wishlist/add/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: `recipe=${encodeURIComponent(recipe)}`
+            })
+            .then(() => {
+                alert('Recipe added to wishlist!');
             });
         }
     </script>
 </head>
 <body>
-    <h1>AI Recipe Generator</h1>
+    <h1>Recipe Generator</h1>
+
     <form onsubmit="generateRecipe(event)">
         <label for="ingredients">Enter Ingredients:</label>
         <textarea id="ingredients" name="ingredients" rows="4" cols="50"></textarea><br>
@@ -34,5 +52,10 @@
 
     <h2>Generated Recipe:</h2>
     <p id="recipe-output"></p>
+
+    <button id="wishlist-button" style="display:none;" onclick="addToWishlist()">Add to Wishlist</button>
+
+    <br><br>
+    <a href="/wishlist/">Go to Wishlist</a>
 </body>
 </html>

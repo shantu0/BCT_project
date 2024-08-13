@@ -2,7 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('',views.home2, name='index-page'),
-    path('generate/',views.generate,name="generate-page"),
-    path('wishlist/',views.wishlist,name="wishlist-page"),
+    path('', views.generate_recipe, name='generate_recipe'),
+    path('wishlist/', views.view_wishlist, name='view_wishlist'),
+    path('wishlist/add/', views.add_to_wishlist, name='add_to_wishlist'),
 ]

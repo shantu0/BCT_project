@@ -110,8 +110,8 @@ button:after {
           {% for i in students  %}
           <tr>
             <th scope="row">{{i.id}}</th>
-            <td>{{i.Items}}</td>
-            <td>{{i.Description}}</td>
+            <td>{{i.items}}</td>
+            <td>{{i.description}}</td>
             <td><a href={% url "delete-page" i.id %}><button type="button" class="btn btn-danger">Delete</button></a></td>
           </tr>
           {% endfor %}

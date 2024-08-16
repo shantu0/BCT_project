@@ -163,7 +163,7 @@
         <form id="wishlist-form">
             {% csrf_token %}
             <div class="input">
-                <label  for="name">Enter items</label>
+                <label for="name">Enter items</label>
                 <input type="text" name="pitems" id="items" required>
                 <button type="submit" id="first-submit" class="btn btn-primary">Generate</button>
             </div>
@@ -171,16 +171,19 @@
                 <div class="spinner"></div>
                 Loading...
             </div>
-            
-    
+        
+            <!-- Hidden field to store the generated recipe -->
+            <input type="hidden" id="stored-recipe" name="recipe" value="">
+        
             <!-- Container to display the generated recipe -->
             <div class="glass-container" id="recipe-container" style="display: none;">
-                <pre style="color: white;margin: 5px;" id="generated-recipe"></pre>
+                <pre style="color: white; margin: 5px;" id="generated-recipe"></pre>
             </div>
-    
+        
             <!-- Second submit button to add the recipe to the wishlist -->
             <button type="submit" id="second-submit" class="btn btn-primary" style="display: none;">Add to Wishlist</button>
         </form>
+        
     </div>
     
     <script>
@@ -188,43 +191,75 @@
             event.preventDefault(); // Prevent the default form submission
             
             var items = document.getElementById('items').value;
-
-            fetch("{% url 'generate_recipe' %}", {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': '{{ csrf_token }}'
-                },
-                body: JSON.stringify({ items: items })
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('generated-recipe').textContent = data.recipe;
-    
-                // Show the recipe container
-                document.getElementById('recipe-container').style.display = 'block';
-    
-                // Show the second submit button
-                document.getElementById('second-submit').style.display = 'inline-block';
-    
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+            var storedRecipeInput = document.getElementById('stored-recipe');
+            
+            if (event.submitter.id === 'first-submit') {
+                // If the "Generate" button was clicked
+                fetch("{% url 'generate_recipe' %}", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}'
+                    },
+                    body: JSON.stringify({ items: items })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('generated-recipe').textContent = data.recipe;
+        
+                    // Store the generated recipe in the hidden input field
+                    storedRecipeInput.value = data.recipe;
+        
+                    // Show the recipe container
+                    document.getElementById('recipe-container').style.display = 'block';
+        
+                    // Show the "Add to Wishlist" button
+                    document.getElementById('second-submit').style.display = 'inline-block';
+        
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            } else if (event.submitter.id === 'second-submit') {
+                // If the "Add to Wishlist" button was clicked
+                fetch("{% url 'add_to_wishlist' %}", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}'
+                    },
+                    body: JSON.stringify({ items: items, recipe: storedRecipeInput.value }) // Updated to include both items and recipe
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // Handle success, maybe redirect to the wishlist page or show a success message
+                        alert('Recipe added to wishlist!');
+                    } else {
+                        // Handle error
+                        alert('Failed to add recipe to wishlist.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            }
         });
+        
+        
         function showLoader() {
-    const loader = document.getElementById('loader');
-    loader.style.display = 'block';
-
-    setTimeout(function() {
-        loader.style.display = 'none';
-    }, 2000); // Hide the loader after 2 seconds
-}
-
-// Trigger the loader on form submission or any other event
-document.getElementById('first-submit').addEventListener('click', function() {
-    showLoader();
-});
+            const loader = document.getElementById('loader');
+            loader.style.display = 'block';
+        
+            setTimeout(function() {
+                loader.style.display = 'none';
+            }, 2000); // Hide the loader after 2 seconds
+        }
+        
+        // Trigger the loader on form submission or any other event
+        document.getElementById('first-submit').addEventListener('click', function() {
+            showLoader();
+        });
+        
 
     </script>
     

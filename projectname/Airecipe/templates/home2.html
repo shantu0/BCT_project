@@ -48,58 +48,39 @@
         text-align: center;
         color: azure;
     }
-
-    button {
-        margin-top: 100px;
-        border: 10px solid white;
-        
-    }
 /* CSS */
+.button-42 {
+    margin-top: 100px;
+width: 150px;
+  background-color: initial;
+  background-image: linear-gradient(-180deg, #FF7E31, #E62C03);
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Inter,-apple-system,system-ui,Roboto,"Helvetica Neue",Arial,sans-serif;
+  height: 40px;
+  line-height: 40px;
+  outline: 0;
+  overflow: hidden;
+  padding: 0 20px;
+  pointer-events: auto;
+  position: relative;
+  text-align: center;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: top;
+  white-space: nowrap;
+  z-index: 9;
+  border: 0;
+  transition: box-shadow .2s;
+}
 
-/* CSS */
-button {
-        background-color: #ff9751;
-        border-radius: 100px;
-        box-shadow: rgba(187, 142, 44, 0.2) 0 -25px 18px -14px inset, rgba(187, 130, 44, 0.15) 0 1px 2px, rgba(187, 142, 44, 0.15) 0 2px 4px, rgba(187, 130, 44, 0.15) 0 4px 8px, rgba(187, 142, 44, 0.15) 0 8px 16px, rgba(187, 146, 44, 0.15) 0 16px 32px;
-        color: rgb(255, 255, 255);
-        cursor: pointer;
-        display: inline-block;
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        padding: 7px 20px;
-        text-align: center;
-        text-decoration: none;
-        transition: all 250ms;
-        border: 0;
-        font-size: 16px;
-        user-select: none;
-        -webkit-user-select: none;
-        touch-action: manipulation;
-        margin-top: 100px;
-        height: 80px;
-        width: 160px;
-        animation: pulsate 1.5s infinite;
-    }
-
-    button:hover {
-        background-color: #ff6a06;
-        box-shadow: rgba(255, 174, 0, 0.35) 0 -25px 18px -14px inset, rgba(187, 125, 44, 0.25) 0 1px 2px, rgba(187, 123, 44, 0.25) 0 2px 4px, rgba(187, 127, 44, 0.25) 0 4px 8px, rgba(187, 134, 44, 0.25) 0 8px 16px, rgba(187, 134, 44, 0.25) 0 16px 32px;
-        transform: scale(1.05) rotate(-1deg);
-    }
-
-    @keyframes pulsate {
-        0% {
-            transform: scale(1);
-            box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
-        }
-        50% {
-            transform: scale(1.1);
-            box-shadow: 0 0 15px rgba(52, 152, 219, 0.75);
-        }
-        100% {
-            transform: scale(1);
-            box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
-        }
-    }
+.button-42:hover {
+  box-shadow: rgba(253, 76, 0, 0.5) 0 3px 8px;
+}
 
     .typing-container {
         display: inline-block;
@@ -173,6 +154,16 @@ button {
         width: 60px;
         height: 60px;
     }
+    footer{
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        margin-top: 140px;
+        background-color: rgb(45, 45, 45);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
 </style>
 </head>
 <body>
@@ -183,13 +174,17 @@ button {
                 <h1 class="typing-containe typing-effec" style="font-size:70px;">with Chef Ai</h1>
             </div>
             <div class="button">
-                <a href={% url "generate-page" %}><button class="button-33">Get started</button></a>
+                <a href={% url "generate-page" %}><button class="button-42">Get started</button></a>
             </div>
         </div>
         <div class="box2">
             
         </div>
     </div>
+    <footer>
+        <p>Copyright © 2024 ChefAi Pvt. Ltd. All Rights Reserved.</p>
+        <p>pritamkapat3@gmail.com--itsritbis@gmail.com--shantusamanta@gmail.com</p>
+    </footer>
 
 {% endblock main %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>

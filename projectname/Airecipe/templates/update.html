@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="../static/css/style.css">
+<title>Title</title>
+<style>
+    *{
+        margin: 10px;
+        padding: 0px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        color: white;
+    }
+    body {
+        background-image: url(https://img.freepik.com/free-photo/3d-dark-grunge-display-background-with-smoky-atmosphere_1048-16218.jpg);
+    }
+    .container {
+        border: 3px solid whitesmoke;
+        margin-top: 50px;
+        /* From https://css.glass */
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(2.4px);
+        -webkit-backdrop-filter: blur(2.4px);
+        border: 1px solid rgba(255, 255, 255, 1);
+        gap: 50px;
+    }
+    .items{
+        margin-top: 30px;
+        width: 400px;
+        font-size: 24px;        
+    }
+    #description {
+        
+      width: 700px;
+      max-height: 300px;
+        color: rgb(255, 255, 255);
+        background-color: rgb(82, 82, 82);
+        border: 1px solid white;
+    }
+    #description.expand {
+      display: block;
+      max-height: 1000px; /* Arbitrary large value to allow full expansion */
+      opacity: 1;
+  }
+    button{
+        padding: 0.6em 2em;
+        border: none;
+        outline: none;
+        color: rgb(255, 255, 255);
+        background: #111;
+        cursor: pointer;
+        position: relative;
+        z-index: 0;
+        border-radius: 10px;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        }
+
+        button:before {
+        content: "";
+        background: linear-gradient(
+            45deg,
+            #ff0000,
+            #ff7300,
+            #fffb00,
+            #48ff00,
+            #00ffd5,
+            #002bff,
+            #7a00ff,
+            #ff00c8,
+            #ff0000
+        );
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        background-size: 400%;
+        z-index: -1;
+        filter: blur(5px);
+        -webkit-filter: blur(5px);
+        width: calc(100% + 4px);
+        height: calc(100% + 4px);
+        animation: glowing-button-85 20s linear infinite;
+        transition: opacity 0.3s ease-in-out;
+        border-radius: 10px;
+        }
+
+        @keyframes glowing-button-85 {
+        0% {
+            background-position: 0 0;
+        }
+        50% {
+            background-position: 400% 0;
+        }
+        100% {
+            background-position: 0 0;
+        }
+        }
+
+        button:after {
+        z-index: -1;
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #222;
+        left: 0;
+        top: 0;
+        border-radius: 10px;
+        }
+        
+
+
+</style>
+
+</head>
+
+<body>
+    <div class="container">
+        <form method="POST">
+            {%csrf_token%}
+            <div >
+                <div class="head"><h1>Customize your recipe</h1></div>
+                <div class="items"><p style="padding: 10px;">Items: {{student.items}}</p></div>
+                <div class="des">
+                    <h4 style="size: 50px;">Description</h4>
+                    <pre><input type="text" name="pdescription" id="description" required value="{{student.description}}"></pre>
+                </div>
+                <button type="submit">Register</button>
+            </div> 
+        </form>
+    </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+</body>
+</html>

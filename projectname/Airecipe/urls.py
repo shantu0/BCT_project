@@ -10,5 +10,7 @@ urlpatterns = [
     path('generate-recipe/', generate_recipe, name='generate_recipe'),
     path('add-to-wishlist/', views.add_to_wishlist, name='add_to_wishlist'),
     path('delete/<int:id>/', views.delete_item, name='delete-page'),
+    path('update/<int:id>',views.update, name="update-page"),
+
 
 ]

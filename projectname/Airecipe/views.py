@@ -86,3 +86,17 @@ def delete_item(request, id):
     
     # Redirect back to the wishlist page after deletion
     return redirect('wishlist-page')
+
+def update(request,id):
+    student=WishlistItem.objects.get(id=id)   
+    if request.method == "POST":
+        items=request.POST.get('pitems')
+        description=request.POST.get('pdescription')
+
+        if items and description:
+            student.items=items
+            student.description=description
+            student.save()
+            return redirect('wishlist-page')
+    else:
+        return render(request,"update.html",{'student': student})

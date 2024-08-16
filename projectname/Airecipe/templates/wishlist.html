@@ -13,6 +13,9 @@
 <link rel="stylesheet" href="assets/css/style.css">
 <title>Title</title>
 <style>
+  *{
+    color: white;
+  }
     body {
         background-image: url(https://img.freepik.com/free-photo/3d-dark-grunge-display-background-with-smoky-atmosphere_1048-16218.jpg);
     }
@@ -100,18 +103,20 @@ button:after {
     <table class="table" >
         <thead style="color: white;">
           <tr>
-            <th scope="col">id</th>
+            <!-- <th scope="col">id</th> -->
             <th scope="col">Items</th>
             <th scope="col">Description</th>
+            <th scope="col">Edit</th>
             <th scope="col">Delete</th>
           </tr>
         </thead>
         <tbody>
           {% for i in students  %}
           <tr>
-            <th scope="row">{{i.id}}</th>
+            <!-- <th scope="row">{{i.id}}</th> -->
             <td>{{i.items}}</td>
             <td>{{i.description}}</td>
+            <td><a href={% url "update-page" i.id %}><button type="button" class="btn btn-primary">Edit</button></a></td>
             <td><a href={% url "delete-page" i.id %}><button type="button" class="btn btn-danger">Delete</button></a></td>
           </tr>
           {% endfor %}
@@ -121,7 +126,6 @@ button:after {
             <button type="button" class="btn btn-success">Generate More</button>
         </a>
     </div>  
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
 </body>

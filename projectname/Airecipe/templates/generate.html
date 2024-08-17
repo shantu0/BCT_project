@@ -39,9 +39,6 @@
       margin: 20px;
       
   }
-
-
-
   .glass-container {
     margin: 10px;
       display: none;
@@ -293,6 +290,39 @@ input:focus {
     align-items: center;
     justify-content: center;
 }
+@media (max-width: 420px) {
+    .container {
+        padding: 0px;
+        margin: 0;
+    }
+    .messageBox {
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+
+    .glass-container {
+        margin-top: 5px;
+        width:380px ;
+        max-height: 1700px;
+        font-size: 15px;
+        overflow-y: auto;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    button {
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+
+    #loader {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    #items {
+        width: 100%;
+        max-width: 300px;
+    }
+}
 
 </style>
 
@@ -335,21 +365,6 @@ input:focus {
     </label>
   </div>
   <input required="" placeholder="Enter items..." type="text" name="pitems" id="items" />
-  <!-- <button id="first-submit">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 664 663">
-      <path
-        fill="none"
-        d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888"
-      ></path>
-      <path
-        stroke-linejoin="round"
-        stroke-linecap="round"
-        stroke-width="33.67"
-        stroke="#6c6c6c"
-        d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888"
-      ></path>
-    </svg>
-  </button> -->
 </div>
 <button type="submit" id="first-submit" class="btn btn-primary">Generate</button>
             </div>

@@ -14,59 +14,114 @@
 <link rel="stylesheet" href="assets/css/style.css">
 <title>Title</title>
 <style>
-    *{
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        color: white;
-    }
-    body{
-        background-image: url(https://autogpt.net/wp-content/uploads/2023/06/Pogla_A_robot_cooking_1d0a3be0-8268-4962-9290-2c62dc3d53a1-768x512.jpg);
-        background-size: cover;
-    }
-    .container {
-        margin-top: 20px;
-        width: 500px;   
-        height: 480px;
-        /* From https://css.glass */
-        background: rgba(255, 255, 255, 0.18);
-        border-radius: 16px;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(4.9px);
-        -webkit-backdrop-filter: blur(4.9px);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    #fb{
-        width: 10px;
-        height: 10px;
-    }
-    .slideshow-container {
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        position: relative;
-        margin: 30px;
-    }
-      
-    .mySlides {
-        width:200px;
-        position: absolute;
-        border-radius: 50%;
-        margin-bottom: 10px;
-    }
-      
+* {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+}
 
+body {
+    background-image: url(https://static.vecteezy.com/system/resources/previews/021/825/652/large_2x/robot-chef-cooking-in-kitchen-of-future-home-genius-smart-robot-working-in-modern-house-free-photo.jpg);
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.container {
+    margin: 20px auto;
+    width: 100%;
+    max-width: 380px;   
+    height: auto;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.18);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4.9px);
+    -webkit-backdrop-filter: blur(4.9px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.slideshow-container {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    position: relative;
+    margin: 20px 0;
+}
+
+.mySlides {
+    width: 100%;
+    border-radius: 50%;
+    position: absolute;
+    margin: 0;
+}
+
+.details pre {
+    text-align: left;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-size: 13px;
+}
+
+.links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.links a img {
+    height: 25px;
+    width: 25px;
+    margin: 8px;
+}
+
+/* Responsive adjustments for 420px and below */
+@media (max-width: 420px) {
+    h2 {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+
+    .container {
+        width: 95%;
+        padding: 10px;
+        height: 600px;
+    }
+
+    .slideshow-container {
+        width: 100px;
+        height: 100px;
+        margin: 15px 0;
+    }
+
+    .details pre {
+        font-size: 12px;
+    }
+
+    .links a img {
+        height: 20px;
+        width: 20px;
+        margin: 5px;
+    }
+}
 
 </style>
 </head>
 <body>
-    <h2 style="margin-left: 600px;">My Profile</h2>
+    <h2>My Profile</h2>
     <div class="container">
         <div class="slideshow-container">
-            <img class="mySlides" src="{% static 'images/pritam.jpg' %}" style="display: block;"/>
+            <img class="mySlides" src="{% static 'images/pritam2.jpg' %}" style="display: block;"/>
             <img class="mySlides" src="{% static 'images/rit.jpg' %}" style="display: none;">
             <img class="mySlides" src="{% static 'images/shantu.jpg' %}" style="display: none;">
           </div>
@@ -82,8 +137,8 @@
             <a href="https://www.facebook.com">
                 <img style="height: 30px;width: 30px;margin: 10px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Facebook_logo_%28square%29.png/480px-Facebook_logo_%28square%29.png"/>
             </a>
-            <a href=""><img style="height: 30px;width: 30px;margin: 10px" src="https://cdn4.iconfinder.com/data/icons/social-messaging-ui-color-shapes-2-free/128/social-instagram-new-square2-512.png"></a>
-            <a href=""><img style="height: 30px;width: 30px;margin: 10px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/480px-LinkedIn_logo_initials.png"></a></div>
+            <a href="https://www.instagram.com/"><img style="height: 30px;width: 30px;margin: 10px" src="https://cdn4.iconfinder.com/data/icons/social-messaging-ui-color-shapes-2-free/128/social-instagram-new-square2-512.png"></a>
+            <a href="https://www.linkedin.com/"><img style="height: 30px;width: 30px;margin: 10px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/480px-LinkedIn_logo_initials.png"></a></div>
     </div>
 <script>
     let slideIndex = 0;
@@ -93,7 +148,7 @@ function showSlides() {
   let slides = document.getElementsByClassName("mySlides");
   for (let i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";  
-  }
+  }  
   slideIndex++;
   if (slideIndex > slides.length) {
     slideIndex = 1;
@@ -101,7 +156,6 @@ function showSlides() {
   slides[slideIndex-1].style.display = "block";  
   setTimeout(showSlides, 1000); // Change image every 2 seconds
 }
-
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>

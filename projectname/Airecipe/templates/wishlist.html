@@ -96,36 +96,131 @@ button:after {
   top: 0;
   border-radius: 10px;
 }
+/* General Table Styles */
+.table {
+    width: 100%;
+    table-layout: auto;
+}
+
+.table th, .table td {
+    padding: 0.75rem;
+    text-align: left;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+    position: relative;
+}
+
+/* Hover effect for description */
+.table .description-cell {
+    max-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+
+.table .description-cell:hover {
+    white-space: normal;
+    overflow: visible;
+    background-color: rgba(0, 0, 0, 0.05); /* Optional: highlight the row on hover */
+}
+
+/* Flexible column widths */
+.table th.items, .table td.items {
+    width: 20%;
+}
+
+.table th.description, .table td.description {
+    width: 50%;
+}
+
+.table th.edit, .table td.edit,
+.table th.delete, .table td.delete {
+    width: 15%;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 300px) {
+    .table thead {
+        display: none; /* Hide table headers on small screens */
+    }
+
+    .table, .table tr, .table td {
+        display: block;
+        width: 100%;
+    }
+
+    .table td {
+        text-align: left;
+        padding: 10px;
+        position: relative;
+        border: none;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    .table td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        display: inline-block;
+        width: 300px;
+        margin-right: 10px; /* Adds space between the label and the content */
+    }
+
+    /* Hover effect for description on small screens */
+    .table .description-cell {
+        max-width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        cursor: pointer;
+    }
+
+    .table .description-cell:hover {
+        white-space: normal;
+        overflow: visible;
+        background-color: rgba(0, 0, 0, 0.05); /* Optional: highlight the row on hover */
+    }
+}
+
 
 </style>
 </head>
 <body>
-    <table class="table" >
-        <thead style="color: white;">
-          <tr>
-            <!-- <th scope="col">id</th> -->
+  <table class="table">
+    <thead style="color: white;">
+        <tr>
             <th scope="col">Items</th>
             <th scope="col">Description</th>
             <th scope="col">Edit</th>
             <th scope="col">Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for i in students  %}
-          <tr>
-            <!-- <th scope="row">{{i.id}}</th> -->
-            <td>{{i.items}}</td>
-            <td>{{i.description}}</td>
-            <td><a href={% url "update-page" i.id %}><button type="button" class="btn btn-primary">Edit</button></a></td>
-            <td><a href={% url "delete-page" i.id %}><button type="button" class="btn btn-danger">Delete</button></a></td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table><div class="d-flex justify-content-center">
-        <a href="{% url 'generate-page' %}">
-            <button type="button" class="btn btn-success">Generate More</button>
-        </a>
-    </div>  
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in students %}
+        <tr>
+            <td data-label="Items">{{i.items}}</td>
+            <td data-label="Description" class="description-cell">{{i.description}}</td>
+            <td data-label="Edit">
+                <a href={% url "update-page" i.id %}>
+                    <button type="button" class="btn btn-primary">Edit</button>
+                </a>
+            </td>
+            <td data-label="Delete">
+                <a href={% url "delete-page" i.id %}>
+                    <button type="button" class="btn btn-danger">Delete</button>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<div class="d-flex justify-content-center">
+    <a href="{% url 'generate-page' %}">
+        <button type="button" class="btn btn-success">Generate More</button>
+    </a>
+</div>
+
+ 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
 </body>

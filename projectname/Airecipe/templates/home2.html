@@ -14,163 +14,180 @@
 <link rel="stylesheet" href="assets/css/style.css">
 <title>Title</title>
 <style>
-    
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    }
-
-    body {
-        background-image: url(https://autogpt.net/wp-content/uploads/2023/06/Pogla_A_robot_cooking_1d0a3be0-8268-4962-9290-2c62dc3d53a1-768x512.jpg);
-    background-size: cover;
-    
-    background-repeat: no-repeat;
-    height: 100vh;
+* {
     margin: 0;
-    }
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
 
+body {
+    background-image: url(https://autogpt.net/wp-content/uploads/2023/06/Pogla_A_robot_cooking_1d0a3be0-8268-4962-9290-2c62dc3d53a1-768x512.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    margin: 0;
+}
 
-    #profile {
-        color: black;
-        display: none; /* Hide on small screens */
-    }
+#profile {
+    color: black;
+    display: none; /* Hide on small screens */
+}
 
-    .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 15px;
-    }
+.container {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+}
+#text1 {
+    font-size: 70px;
+}
 
-    .box1 {
-        text-align: center;
-        color: azure;
-    }
-/* CSS */
+.box1 {
+    text-align: center;
+    color: azure;
+}
+
+/* Button styling */
 .button-42 {
-    margin-top: 100px;
-width: 150px;
-  background-color: initial;
-  background-image: linear-gradient(-180deg, #FF7E31, #E62C03);
-  border-radius: 6px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
-  color: #FFFFFF;
-  cursor: pointer;
-  display: inline-block;
-  font-family: Inter,-apple-system,system-ui,Roboto,"Helvetica Neue",Arial,sans-serif;
-  height: 40px;
-  line-height: 40px;
-  outline: 0;
-  overflow: hidden;
-  padding: 0 20px;
-  pointer-events: auto;
-  position: relative;
-  text-align: center;
-  touch-action: manipulation;
-  user-select: none;
-  -webkit-user-select: none;
-  vertical-align: top;
-  white-space: nowrap;
-  z-index: 9;
-  border: 0;
-  transition: box-shadow .2s;
+    margin-top: 50px;
+    width: 150px;
+    background-color: initial;
+    background-image: linear-gradient(-180deg, #FF7E31, #E62C03);
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Inter,-apple-system,system-ui,Roboto,"Helvetica Neue",Arial,sans-serif;
+    height: 40px;
+    line-height: 40px;
+    outline: 0;
+    overflow: hidden;
+    padding: 0 20px;
+    pointer-events: auto;
+    position: relative;
+    text-align: center;
+    touch-action: manipulation;
+    user-select: none;
+    vertical-align: top;
+    white-space: nowrap;
+    z-index: 9;
+    border: 0;
+    transition: box-shadow .2s;
 }
 
 .button-42:hover {
-  box-shadow: rgba(253, 76, 0, 0.5) 0 3px 8px;
+    box-shadow: rgba(253, 76, 0, 0.5) 0 3px 8px;
 }
 
-    .typing-container {
-        display: inline-block;
-        border-right: 2px solid black; /* Cursor effect */
-        white-space: nowrap;
-        overflow: hidden; /* Hide overflow */
-        font-size: 36px;
+/* Typing effect styling */
+.typing-container {
+    display: inline-block;
+    border-right: 2px solid black; /* Cursor effect */
+    white-space: nowrap;
+    overflow: hidden; /* Hide overflow */
+    font-size: 36px;
+}
+footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 80px;
+    width: 100%;
+    /* Optional styling */
+    background-color: #040202;
+    text-align: center;
+    padding: 10px;
+    color: rgb(79, 79, 79);
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: rgb(255, 255, 255); }
+}
+
+.typing-effect {
+    animation: typing 2s steps(30, end), blink-caret .75s step-end infinite;
+}
+
+/* Responsive styling for 414px x 895px */
+@media (max-width: 420px) {
+    body {
+    background-image: url(https://autogpt.net/wp-content/uploads/2023/06/Pogla_A_robot_cooking_1d0a3be0-8268-4962-9290-2c62dc3d53a1-768x512.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 900px;
+    margin: 0;
+}
+    .container {
+        margin-top: 30px;
+        padding: 10px;
     }
 
-    @keyframes typing {
-        from { width: 0; }
-        to { width: 100%; }
+    #text1 {
+        font-size: 40px;
+    }
+    h1 {
+        font-size: 40px;
     }
 
-    @keyframes blink-caret {
-        from, to { border-color: transparent; }
-        50% { border-color: rgb(255, 255, 255); }
+    .button-42 {
+        width: 120px;
+        height: 40px;
+        font-size: 14px;
     }
 
-    .typing-effect {
-        animation: typing 2s steps(30, end), blink-caret .75s step-end infinite;
-    }
-
-    @media (max-width: 767px) {
-        #profile {
-            display: none; /* Hide profile link on small screens */
-        }
-
-        .container {
-            padding: 15px;
-        }
-
-        .typing-container {
-            font-size: 24px;
-        }
-
-        button {
-            width: 120px;
-            height: 60px;
-            font-size: 14px;
-        }
-    }
-
-    @media (min-width: 768px) {
-        .container {
-            flex-direction: row;
-            justify-content: space-between;
-        }
-
-        .box1 {
-            flex: 1;
-        }
-
-        .box2 {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        #profile {
-            display: inline; /* Show on larger screens */
-        }
-    }
-
-    .box2 img {
-        max-width: 100%;
-        height: auto;
-    }
-    #icon {
-        width: 60px;
-        height: 60px;
-    }
-    footer{
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        margin-top: 150px;
-        background-color: rgb(45, 45, 45);
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    .container {
         flex-direction: column;
+        justify-content: center;
     }
+    
+    .box2 {
+        display: none;
+    }
+
+    .box1 {
+        flex: 1;
+        text-align: center;
+    }
+
+    #profile {
+        display: none; /* Hide profile link on small screens */
+    }
+
+    footer {
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+        margin-top: 50px;
+        font-size: 10px;
+    }
+}
+
+.box2 img {
+    max-width: 100%;
+    height: auto;
+}
+
+#icon {
+    width: 60px;
+    height: 60px;
+}
+
+
 </style>
 </head>
 <body>
     <div class="container">
         <div class="box1">
             <div class="title">
-                <h1 class="typing-container typing-effect" style="font-size:70px;">Create your recipe</h1>
+                <p id="text1" class="typing-container typing-effect">Create your recipe</p>
                 <h1 class="typing-containe typing-effec" style="font-size:70px;">with Chef Ai</h1>
             </div>
             <div class="button">
@@ -181,10 +198,10 @@ width: 150px;
             
         </div>
     </div>
-    <footer>
-        <p>Copyright © 2024 ChefAi Pvt. Ltd. All Rights Reserved.</p>
-        <p>pritamkapat3@gmail.com--itsritbis@gmail.com--shantusamanta@gmail.com</p>
-    </footer>
+<footer>
+    <p>Copyright © 2024 ChefAi Pvt. Ltd. All Rights Reserved.</p>
+    <p>pritamkapat3@gmail.com--itsritbis@gmail.com--shantusamanta@gmail.com</p>
+</footer>
 
 {% endblock main %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>

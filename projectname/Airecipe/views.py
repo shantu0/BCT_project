@@ -92,11 +92,11 @@ def delete_item(request, id):
 def update(request,id):
     student=WishlistItem.objects.get(id=id)   
     if request.method == "POST":
-        items=request.POST.get('pitems')
+        #items=request.POST.get('pitems')
         description=request.POST.get('pdescription')
 
-        if items and description:
-            student.items=items
+        if description:
+            #student.items=items
             student.description=description
             student.save()
             return redirect('wishlist-page')

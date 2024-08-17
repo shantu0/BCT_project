@@ -22,7 +22,6 @@
     .container {
         border: 3px solid whitesmoke;
         margin-top: 50px;
-        /* From https://css.glass */
         background: rgba(255, 255, 255, 0.1);
         border-radius: 16px;
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -31,25 +30,21 @@
         border: 1px solid rgba(255, 255, 255, 1);
         gap: 50px;
     }
-    .items{
+    .items {
         margin-top: 30px;
         width: 400px;
-        font-size: 24px;        
+        font-size: 24px;
     }
     #description {
-        
-      width: 700px;
-      max-height: 300px;
+        width: 700px;
+        height: 150px; /* Increase the height for better visibility */
         color: rgb(255, 255, 255);
         background-color: rgb(82, 82, 82);
         border: 1px solid white;
+        padding: 10px; /* Add padding for better text visibility */
+        resize: vertical; /* Allow the user to resize the text box vertically */
     }
-    #description.expand {
-      display: block;
-      max-height: 1000px; /* Arbitrary large value to allow full expansion */
-      opacity: 1;
-  }
-    button{
+    button {
         padding: 0.6em 2em;
         border: none;
         outline: none;
@@ -62,9 +57,8 @@
         user-select: none;
         -webkit-user-select: none;
         touch-action: manipulation;
-        }
-
-        button:before {
+    }
+    button:before {
         content: "";
         background: linear-gradient(
             45deg,
@@ -90,9 +84,8 @@
         animation: glowing-button-85 20s linear infinite;
         transition: opacity 0.3s ease-in-out;
         border-radius: 10px;
-        }
-
-        @keyframes glowing-button-85 {
+    }
+    @keyframes glowing-button-85 {
         0% {
             background-position: 0 0;
         }
@@ -102,9 +95,8 @@
         100% {
             background-position: 0 0;
         }
-        }
-
-        button:after {
+    }
+    button:after {
         z-index: -1;
         content: "";
         position: absolute;
@@ -114,10 +106,7 @@
         left: 0;
         top: 0;
         border-radius: 10px;
-        }
-        
-
-
+    }
 </style>
 
 </head>
@@ -126,15 +115,15 @@
     <div class="container">
         <form method="POST">
             {%csrf_token%}
-            <div >
+            <div>
                 <div class="head"><h1>Customize your recipe</h1></div>
                 <div class="items"><p style="padding: 10px;">Items: {{student.items}}</p></div>
                 <div class="des">
                     <h4 style="size: 50px;">Description</h4>
-                    <pre><input type="text" name="pdescription" id="description" required value="{{student.description}}"></pre>
+                    <pre><textarea name="pdescription" id="description" required>{{student.description}}</textarea></pre>
                 </div>
                 <button type="submit">Register</button>
-            </div> 
+            </div>
         </form>
     </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>

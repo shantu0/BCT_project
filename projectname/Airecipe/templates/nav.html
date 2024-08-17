@@ -11,9 +11,10 @@
 <title>{% block title %}{% endblock title %}</title>
 <style>
   #navi {
+    height:65px;
     -webkit-box-shadow: 4px 10px 106px -26px rgba(255,255,255,1);
--moz-box-shadow: 4px 10px 106px -26px rgba(255,255,255,1);
-box-shadow: 4px 10px 106px -26px rgba(255,255,255,1);
+    -moz-box-shadow: 4px 10px 106px -26px rgba(255,255,255,1);
+    box-shadow: 4px 10px 106px -26px rgba(255,255,255,1);
   }
   #icon {
     width: 60px;
@@ -36,6 +37,7 @@ box-shadow: 4px 10px 106px -26px rgba(255,255,255,1);
               <a class="nav-link active" aria-current="page" href={% url "index-page" %}>Home</a>
               <a class="nav-link" href={% url "generate-page" %} >Generate</a>
               <a class="nav-link" href={% url "wishlist-page" %} >Wishlist</a>
+              <a class="nav-link" href={% url "profile-page" %} >My Profile</a>
             </div>
           </div>
         </div>

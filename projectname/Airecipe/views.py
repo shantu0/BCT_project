@@ -14,6 +14,8 @@ def home2(request):
 # Generate recipe view
 def generate(request):
     return render(request, "generate.html")
+def profile(request):
+    return render(request, "profile.html")
 
 # Wishlist view
 def wishlist(request):
